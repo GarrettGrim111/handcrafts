@@ -22,7 +22,7 @@ const Holder = styled.footer`
   font-size: 30px;
   position: fixed;
   right: 0;
-  top: 50vh;
+  top: 45vh;
   margin-right: 20px;
   z-index: 5;
 `;

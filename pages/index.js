@@ -59,20 +59,12 @@ export default function Home() {
           </Holder>
         </WorkPlace3>
       </Wrapper>
-      <Footer>
-        <span>Phone : 666 666 666</span>
-        <span>email: littleApple@haynaku.com</span>
-      </Footer>
+    
     </div>
   );
 }
 
-const Footer = styled.footer`
-  background-color: grey;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-`;
+
 
 // const Footer = styled.footer``;
 // const Footer = styled.footer``;
