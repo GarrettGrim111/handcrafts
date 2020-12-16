@@ -1,65 +1,80 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import styled from "styled-components";
+import {
+  Wrapper,
+  WorkPlace1,
+  WorkPlace2,
+  WorkPlace3,
+  Holder,
+  Title,
+  Subtitle,
+  Text,
+  Picture,
+} from "../styles/utils";
+import Router from "./../components/router";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>HandCrafts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Wrapper>
+        <WorkPlace1>
+          <Holder>
+            <Title>Craft with Story</Title>
+            <Subtitle>Hand-maded products</Subtitle>
+          </Holder>
+          <Router />
+        </WorkPlace1>
+        <WorkPlace2>
+          <Holder>
+            <Subtitle>Description</Subtitle>
+            <Text>
+              Pellentesque habitant morbi tristique senectus et netus et
+              malesuada fames ac turpis egestas
+            </Text>
+            <Text>
+              - Modern material <br />- Super Mega Amazing <br /> - Refined
+              design
+            </Text>
+          </Holder>
+          <Holder>
+            <Picture />
+          </Holder>
+        </WorkPlace2>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+        <WorkPlace3>
+          <Holder>
+            <Picture />
+          </Holder>
+          <Holder>
+            <Subtitle>About me</Subtitle>
+            <Text>
+              Pellentesque habitant morbi tristique senectus et netus et
+              malesuada fames ac turpis egestas
+            </Text>
+            <Text>If you like my work, contact is bellow.</Text>
+          </Holder>
+        </WorkPlace3>
+      </Wrapper>
+      <Footer>
+        <span>Phone : 666 666 666</span>
+        <span>email: littleApple@haynaku.com</span>
+      </Footer>
     </div>
-  )
+  );
 }
+
+const Footer = styled.footer`
+  background-color: grey;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+`;
+
+// const Footer = styled.footer``;
+// const Footer = styled.footer``;
+// const Footer = styled.footer``;
+// const Footer = styled.footer``;
