@@ -2,16 +2,16 @@ import Head from "next/head";
 import styled from "styled-components";
 import {
   Wrapper,
-  WorkPlace1,
-  WorkPlace2,
-  WorkPlace3,
+  WorkPlace,
   Holder,
   Title,
   Subtitle,
   Text,
   Picture,
-} from "../styles/utils";
-import Router from "./../components/router";
+  // Container,
+} from "styles/utils";
+import Navigation from "components/navigation";
+import Footer from "components/footer";
 
 export default function Home() {
   return (
@@ -21,14 +21,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper>
-        <WorkPlace1>
+        <WorkPlace id="intro">
           <Holder>
             <Title>Craft with Story</Title>
             <Subtitle>Hand-maded products</Subtitle>
           </Holder>
-          <Router />
-        </WorkPlace1>
-        <WorkPlace2>
+          <Navigation />
+        </WorkPlace>
+
+        <WorkPlace left id="product">
           <Holder>
             <Subtitle>Description</Subtitle>
             <Text>
@@ -43,9 +44,9 @@ export default function Home() {
           <Holder>
             <Picture />
           </Holder>
-        </WorkPlace2>
+        </WorkPlace>
 
-        <WorkPlace3>
+        <WorkPlace id="contact">
           <Holder>
             <Picture />
           </Holder>
@@ -57,14 +58,12 @@ export default function Home() {
             </Text>
             <Text>If you like my work, contact is bellow.</Text>
           </Holder>
-        </WorkPlace3>
+        </WorkPlace>
+        <Footer />
       </Wrapper>
-    
     </div>
   );
 }
-
-
 
 // const Footer = styled.footer``;
 // const Footer = styled.footer``;

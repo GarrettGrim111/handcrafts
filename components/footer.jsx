@@ -1,23 +1,24 @@
 import styled from "styled-components";
-import { Text } from "../styles/utils";
+// import { Text } from "styles/utils";
 
 const Footer = () => {
   return (
-    <FooterHolder>
+    <Container>
       <span>Phone : 666 666 666</span>
       <span>email: littleApple@haynaku.com</span>
-    </FooterHolder>
+    </Container>
   );
 };
 
-const FooterHolder = styled.div`
+const Container = styled.footer`
   width: 100%;
-  height: 2.5rem;
+
   background-color: grey;
   display: flex;
   justify-content: space-around;
-
-  align-items: center;
+  position: absolute;
+  bottom: 0;
+  padding: 1rem 0;
 
   @media (max-width: 800px) {
     justify-content: center;

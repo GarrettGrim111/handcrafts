@@ -14,46 +14,18 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const WorkPlace1 = styled.div`
+export const WorkPlace = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+
+  justify-content: ${({ left }) => (left ? "flex-start" : "flex-end")};
   min-height: 100vh;
   width: 100%;
-  /* margin: 0 auto; */
-  max-width: 1900px;
-
   background-color: blue;
-
-  flex-direction: column;
-  position: relative;
-`;
-export const WorkPlace2 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  min-height: 100vh;
-  width: 100%;
-
-  max-width: 1900px;
-
-  background-color: green;
-
-  position: relative;
-`;
-export const WorkPlace3 = styled.div`
-  display: flex;
-  justify-content: space-between;
-  min-height: 100vh;
-  width: 100%;
-
-  max-width: 1900px;
-
-  background-color: green;
-
-  position: relative;
 `;
 
-export const Holder = styled.footer`
+
+
+export const Holder = styled.div`
   background-color: pink;
   display: flex;
   justify-content: center;
@@ -62,6 +34,10 @@ export const Holder = styled.footer`
   width: 50%;
   height: 100vh;
 `;
+
+// export const Container = styled.div`${Holder}
+//  background-color: yellow;
+// `;
 
 export const Title = styled.h1``;
 
