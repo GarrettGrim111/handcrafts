@@ -1,5 +1,6 @@
 import Head from "next/head";
 import styled from "styled-components";
+
 import {
   Wrapper,
   Intro,
@@ -23,12 +24,24 @@ export default function Home() {
       <Head>
         <title>HandCrafts</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="preload"
+          href="fonts/Tangerine-Regular.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preload"
+          href="fonts/Tangerine-Bold.ttf"
+          as="font"
+          crossOrigin=""
+        />
       </Head>
       <Wrapper>
         <Intro id="intro">
           <Holder>
             <Title>Craft with Story</Title>
-            <Subtitle>Hand-maded products</Subtitle>
+            <Subtitle>Hand-made products</Subtitle>
           </Holder>
           <Navigation />
         </Intro>

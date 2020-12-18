@@ -40,11 +40,11 @@ export const Intro = styled.div`
     (id = "intro" ? `url("string.jpg")` : "red")}; */
 
   // for all
-  background-image: url("string.jpg");
+  background-image: url("images/string.jpg");
 `;
 export const Product = styled.div`
   ${GeneralPageStyles}
-  background-image: url("pillow.jpg");
+  background-image: url("images/pillow.jpg");
 `;
 export const Contact = styled.div`
   ${GeneralPageStyles}
@@ -69,12 +69,16 @@ export const Holder = styled.div`
 // `;
 
 export const Title = styled.h1`
-  font-family: "Tangerine", cursive;
+font-size: 60px;
+  font-family: "TangerineBold", sans-serif;
 `;
 
-export const Subtitle = styled.h4``;
+export const Subtitle = styled.h4`
+  font-size: 25px;
+`;
 
 export const Text = styled.div`
+ font-size: 20px;
   margin: 10px;
   width: 600px;
 `;
@@ -99,5 +103,5 @@ export const Profile = styled.div`
   background-repeat: no-repeat;
   /* background-size: cover; */
   object-fit: cover;
-  background-image: url("villegas.jpg");
+  background-image: url("images/villegas.jpg");
 `;

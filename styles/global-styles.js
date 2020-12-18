@@ -9,8 +9,6 @@ padding: 0;
 
 body {
     min-height: 100vh; 
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     overflow: hidden;
  
 }
@@ -23,6 +21,21 @@ html {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@font-face {
+  font-family: "TangerineBold";
+  src: url("fonts/Tangerine-Regular.ttf");
+  font-style: cursive;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Tangerine";
+  src: url("fonts/Tangerine-Bold.ttf");
+  font-style: cursive;
+  font-weight: 700;
+  font-display: swap;
 }
 
 `;
