@@ -2,12 +2,16 @@ import Head from "next/head";
 import styled from "styled-components";
 import {
   Wrapper,
-  WorkPlace,
+  Intro,
   Holder,
   Title,
   Subtitle,
   Text,
   Picture,
+  Product,
+  Contact,
+  Profile,
+
   // Container,
 } from "styles/utils";
 import Navigation from "components/navigation";
@@ -21,15 +25,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper>
-        <WorkPlace id="intro">
+        <Intro id="intro">
           <Holder>
             <Title>Craft with Story</Title>
             <Subtitle>Hand-maded products</Subtitle>
           </Holder>
           <Navigation />
-        </WorkPlace>
+        </Intro>
 
-        <WorkPlace left id="product">
+        <Product left id="product">
           <Holder>
             <Subtitle>Description</Subtitle>
             <Text>
@@ -44,21 +48,33 @@ export default function Home() {
           <Holder>
             <Picture />
           </Holder>
-        </WorkPlace>
+        </Product>
 
-        <WorkPlace id="contact">
+        <Contact id="contact">
           <Holder>
-            <Picture />
+            <Profile />
           </Holder>
           <Holder>
             <Subtitle>About me</Subtitle>
             <Text>
-              Pellentesque habitant morbi tristique senectus et netus et
-              malesuada fames ac turpis egestas
+              Duis sed erat vel magna viverra lobortis. Morbi dolor ipsum,
+              maximus vitae suscipit quis, tempor a purus. Etiam massa nulla,
+              venenatis in suscipit eget, consectetur id dui. Proin vestibulum
+              enim id eros egestas placerat. Pellentesque habitant morbi
+              tristique senectus et netus et malesuada fames ac turpis egestas.
+              Praesent odio urna, faucibus in cursus in, finibus et nisi. Donec
+              elit lorem, luctus a sollicitudin a, eleifend et dolor. Nullam sit
+              amet lectus a velit blandit rhoncus vel et enim. Etiam convallis
+              lectus sit amet odio porta aliquam. Quisque nulla sapien,
+              fringilla eget aliquam vitae, faucibus condimentum ligula. Etiam
+              semper malesuada arcu, et venenatis mi dictum id. Nulla
+              sollicitudin, urna eu interdum vulputate, purus tortor varius
+              nunc, sed porttitor turpis lacus sed neque. Morbi sit amet risus
+              vel massa facilisis lobortis. Fusce iaculis et nisl id bibendum.
             </Text>
             <Text>If you like my work, contact is bellow.</Text>
           </Holder>
-        </WorkPlace>
+        </Contact>
         <Footer />
       </Wrapper>
     </div>
