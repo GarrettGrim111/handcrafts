@@ -12,8 +12,13 @@ const Footer = () => {
 
 const Container = styled.footer`
   width: 100%;
-
-  background-color: grey;
+  box-shadow: 0px -10px 26px 0px rgba(0,0,0,0.69);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 66, 181, 1) 0%,
+    rgba(0, 212, 255, 1) 50%,
+    rgba(20, 66, 181, 1) 100%
+  );
   display: flex;
   justify-content: space-around;
   position: absolute;

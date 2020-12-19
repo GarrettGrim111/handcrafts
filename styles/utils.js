@@ -3,20 +3,15 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  min-height: 300vh;
   width: 100%;
   margin: 0 auto;
   max-width: 1900px;
-
-  background-color: purple;
-
   flex-direction: column;
   position: relative;
 `;
 
 const GeneralPageStyles = css`
   display: flex;
-
   justify-content: ${({ left }) => (left ? "flex-start" : "flex-end")};
   min-height: 100vh;
   width: 100%;
@@ -25,6 +20,8 @@ const GeneralPageStyles = css`
   background-repeat: no-repeat;
   background-size: cover;
 `;
+
+ // effort to create only one background container rendered contionally
 
 export const Intro = styled.div`
   ${GeneralPageStyles}
@@ -50,9 +47,7 @@ export const Contact = styled.div`
   ${GeneralPageStyles}
 `;
 
-// export const Title2 = styled(Title)`
-// color: green;
-// `;
+
 
 export const Holder = styled.div`
   background-color: unset;
@@ -64,12 +59,10 @@ export const Holder = styled.div`
   height: 100vh;
 `;
 
-// export const Container = styled.div`${Holder}
-//  background-color: yellow;
-// `;
+
 
 export const Title = styled.h1`
-font-size: 60px;
+  font-size: 60px;
   font-family: "TangerineBold", sans-serif;
 `;
 
@@ -78,7 +71,7 @@ export const Subtitle = styled.h4`
 `;
 
 export const Text = styled.div`
- font-size: 20px;
+  font-size: 20px;
   margin: 10px;
   width: 600px;
 `;
@@ -87,7 +80,6 @@ export const Picture = styled.div`
   width: 400px;
   height: 150px;
   background-color: purple;
-
   background-position: center;
   background-repeat: no-repeat;
   /* background-size: cover; */
