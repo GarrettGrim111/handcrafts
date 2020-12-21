@@ -21,7 +21,7 @@ const GeneralPageStyles = css`
   background-size: cover;
 `;
 
- // effort to create only one background container rendered contionally
+// effort to create only one background container rendered contionally
 
 export const Intro = styled.div`
   ${GeneralPageStyles}
@@ -47,8 +47,6 @@ export const Contact = styled.div`
   ${GeneralPageStyles}
 `;
 
-
-
 export const Holder = styled.div`
   background-color: unset;
   display: flex;
@@ -58,8 +56,6 @@ export const Holder = styled.div`
   width: 50%;
   height: 100vh;
 `;
-
-
 
 export const Title = styled.h1`
   font-size: 60px;
@@ -78,12 +74,23 @@ export const Text = styled.div`
 
 export const Picture = styled.div`
   width: 400px;
-  height: 150px;
-  background-color: purple;
+  height: 500px;
+
   background-position: center;
   background-repeat: no-repeat;
-  /* background-size: cover; */
-  object-fit: cover;
+  background-size: cover;
+
+  border-radius: 25px;
+  box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
+  /* background-image: url(images/product/greyOnPink.jpg); */
+  background-image: ${({ product }) => {
+    if (product === "grey") return "url(images/product/greyOnPink.jpg)";
+    if (product === "gold") return "url(images/product/goldOnPink.jpg)";
+    if (product === "cream") return "url(images/product/creamOnPink.jpg)";
+    if (product === "brown") return "url(images/product/brownOnPink.jpg)";
+    if (product === "black") return "url(images/product/blackOnPink.jpg)";
+    if (product === "burgundy") return "url(images/product/burgundyOnPink.jpg)";
+  }};
 `;
 
 export const Profile = styled.div`

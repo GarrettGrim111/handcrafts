@@ -45,7 +45,6 @@ const Holder = styled.nav`
 `;
 
 const MenuItem = styled.a`
-  border-radius: 100%;
   margin: 1rem 0;
   width: 40px;
   height: 40px;
