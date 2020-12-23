@@ -1,35 +1,24 @@
 // import { RiRecordCircleFill, RiCheckboxBlankCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 
-import { useRouter } from "next/router";
-import Link from "next/link";
-
-const Navigation = ({ setOption }) => {
-  const pathname = useRouter().asPath;
-
+const Navigation = ({ option, setOption }) => {
   return (
     <Holder>
-      <Link href="/#intro" passHref>
-        <MenuItem
-          pathname={pathname}
-          name="/#intro"
-          onClick={() => setOption("intro")}
-        />
-      </Link>
-      <Link href="/#product" passHref>
-        <MenuItem
-          pathname={pathname}
-          name="/#product"
-          onClick={() => setOption("product")}
-        />
-      </Link>
-      <Link href="/#contact" passHref>
-        <MenuItem
-          pathname={pathname}
-          name="/#contact"
-          onClick={() => setOption("contact")}
-        />
-      </Link>
+      <MenuItem
+        option={option}
+        name="intro"
+        onClick={() => setOption("intro")}
+      />
+      <MenuItem
+        option={option}
+        name="product"
+        onClick={() => setOption("product")}
+      />
+      <MenuItem
+        option={option}
+        name="contact"
+        onClick={() => setOption("contact")}
+      />
     </Holder>
   );
 };
@@ -44,15 +33,14 @@ const Holder = styled.nav`
   top: 15vh;
 `;
 
-const MenuItem = styled.a`
+const MenuItem = styled.span`
+  cursor: pointer;
   margin: 1rem 0;
   width: 40px;
   height: 40px;
   background-size: 100%;
-  background-image: ${({ pathname, name }) =>
-    (name === "/#intro" && pathname === "/") || pathname === name
-      ? "url(images/blue.png)"
-      : "url(images/red.png)"};
+  background-image: ${({ option, name }) =>
+    option === name ? "url(images/blue.png)" : "url(images/red.png)"};
 `;
 
 export default Navigation;

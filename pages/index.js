@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useState } from "react";
 
 // TODO: delete dotenv library (attempt on setting firebase)
@@ -22,17 +22,15 @@ import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
 
-export default function Home({ data }) {
+export default function Home({ product }) {
   const [option, setOption] = useState("intro");
-  const [product, setProduct] = useState("gold");
+  const [image, setImage] = useState("gold");
 
-  console.log(data);
   console.log(product);
   return (
     <div>
       <Head>
         <title>HandCrafts</title>
-        <link rel="icon" href="/favicon.ico" />
         <link
           rel="preload"
           href="fonts/Tangerine-Regular.ttf"
@@ -46,8 +44,9 @@ export default function Home({ data }) {
           crossOrigin=""
         />
       </Head>
+
       <Wrapper>
-        <Navigation setOption={setOption} />
+        <Navigation option={option} setOption={setOption} />
         {option === "intro" && (
           <Intro id="intro">
             <Holder>
@@ -58,20 +57,35 @@ export default function Home({ data }) {
         )}
 
         {option === "product" && (
-          <Product left id="product">
+          <Product left>
             <Holder>
               <Subtitle>Description</Subtitle>
               <Text>
-                Keep you hair in check with this scrunchie, there are following
-                color variations: (click to choose a color!)
-                <Grey onClick={() => setProduct("grey")}>Grey</Grey>
-                <Gold onClick={() => setProduct("gold")}>Gold</Gold>
-                <Burgundy onClick={() => setProduct("burgundy")}>
-                  Burgundy
-                </Burgundy>
-                <Black onClick={() => setProduct("black")}>Black</Black>
-                <Cream onClick={() => setProduct("cream")}>Cream</Cream>
-                <Brown onClick={() => setProduct("brown")}>Brown</Brown>
+                Keep you hair in check with this {product.name}, there are
+                following color variations: (click to choose a color!)
+                <Products>
+                  {product.color.map((color) => (
+                    <Item
+                      key={color}
+                      color={color}
+                      onClick={() => setImage(color)}
+                    >
+                      {color}
+                    </Item>
+                  ))}
+
+                  {/* @TODO: USELESS: you can remvoe this
+                   <Item onClick={() => setImage("grey")}>Grey</Item>
+                  <Item onClick={() => setImage("gold")}>Gold</Item>
+                  <Item onClick={() => setImage("burgundy")}>Burgundy</Item>
+                  <Item color="black" onClick={() => setImage("black")}>
+                    Black
+                  </Item>
+                  <Item color="cream" onClick={() => setImage("cream")}>
+                    Cream
+                  </Item>
+                  <Item onClick={() => setImage("brown")}>Brown</Item> */}
+                </Products>
                 and it is made of silk.
               </Text>
               <Text>
@@ -80,13 +94,13 @@ export default function Home({ data }) {
               </Text>
             </Holder>
             <Holder>
-              <Picture product={product} />
+              <Picture image={image} />
             </Holder>
           </Product>
         )}
 
         {option === "contact" && (
-          <Contact id="contact">
+          <Contact>
             <Holder>
               <Profile />
             </Holder>
@@ -120,65 +134,72 @@ export default function Home({ data }) {
 }
 
 export async function getStaticProps() {
-  // Call an external API endpoint to get data.
-  // You can use any data fetching library
-  // let data = [];
-  // firestore
-  //   .collection("data")
-  //   .get()
-  //   .then((doc) => {
-  //     doc.forEach((doc) => {
-  //       data.push(doc);
-  //     });
-  //   });
-  let data = [];
-  firestore
-    .collection("data")
+  let product;
+
+  await firestore
+    .collection("products")
+    .doc("Tr8Q0ojRHguidi7v6O7R")
     .get()
-    .then((snapshotQuery) =>
-      snapshotQuery.forEach((doc) => data.push(doc.data()))
-    );
+    .then((doc) => (product = doc.data()));
 
   // By returning { props: data }, the Blog component
   // will receive `data` as a prop at build time
   return {
     props: {
-      data,
+      product,
     },
   };
 }
 
 // const Footer = styled.footer``;
-// const Footer = styled.footer``;
-
-const Gold = styled.p`
-  color: gold;
-  margin: 5px;
-  cursor: pointer;
-`;
-const Burgundy = styled.p`
-  color: #800020;
-  margin: 5px;
-  cursor: pointer;
+const Products = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  width: 120px;
+  text-align: center;
 `;
 
-const Black = styled.p`
-  color: black;
-  margin: 5px;
+const GeneralProductStyles = css`
+  margin: 10px;
+  padding: 5px;
   cursor: pointer;
+  border: 1px solid black;
 `;
-const Cream = styled.p`
-  color: #fffdd0;
-  margin: 5px;
-  cursor: pointer;
+
+// @TODO: Finish color matching
+const Item = styled.span`
+  ${GeneralProductStyles}
+  color: ${({ color }) => {
+    if (color === "gold") return "gold";
+    if (color === "black") return "#000";
+    if (color === "black") return "#000";
+    return "grey";
+  }};
 `;
-const Brown = styled.p`
-  color: brown;
-  margin: 5px;
-  cursor: pointer;
-`;
-const Grey = styled.p`
-  color: grey;
-  margin: 5px;
-  cursor: pointer;
-`;
+
+// @TODO: USELESS - you can remove this
+// const Gold = styled.span`
+//   ${GeneralProductStyles}
+//   color: gold;
+// `;
+// const Burgundy = styled.span`
+//   color: #800020;
+//   ${GeneralProductStyles}
+// `;
+
+// const Black = styled.span`
+//   color: black;
+//   ${GeneralProductStyles}
+// `;
+// const Cream = styled.span`
+//   color: #fffdd0;
+//   ${GeneralProductStyles}
+// `;
+// const Brown = styled.span`
+//   color: brown;
+//   ${GeneralProductStyles}
+// `;
+// const Grey = styled.span`
+//   color: grey;
+//   ${GeneralProductStyles}
+// `;

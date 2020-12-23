@@ -83,13 +83,13 @@ export const Picture = styled.div`
   border-radius: 25px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
   /* background-image: url(images/product/greyOnPink.jpg); */
-  background-image: ${({ product }) => {
-    if (product === "grey") return "url(images/product/greyOnPink.jpg)";
-    if (product === "gold") return "url(images/product/goldOnPink.jpg)";
-    if (product === "cream") return "url(images/product/creamOnPink.jpg)";
-    if (product === "brown") return "url(images/product/brownOnPink.jpg)";
-    if (product === "black") return "url(images/product/blackOnPink.jpg)";
-    if (product === "burgundy") return "url(images/product/burgundyOnPink.jpg)";
+  background-image: ${({ image }) => {
+    if (image === "grey") return "url(images/product/greyOnPink.jpg)";
+    if (image === "gold") return "url(images/product/goldOnPink.jpg)";
+    if (image === "cream") return "url(images/product/creamOnPink.jpg)";
+    if (image === "brown") return "url(images/product/brownOnPink.jpg)";
+    if (image === "black") return "url(images/product/blackOnPink.jpg)";
+    if (image === "burgundy") return "url(images/product/burgundyOnPink.jpg)";
   }};
 `;
 
