@@ -21,26 +21,14 @@ const GeneralPageStyles = css`
   background-size: cover;
 `;
 
-// effort to create only one background container rendered contionally
 
 export const Intro = styled.div`
   ${GeneralPageStyles}
-
-  // not working
-  /* background-image:  ${(id) => {
-    if ((id = "intro")) return `url("string.jpg")`;
-    if ((id = "contact")) return `url("pillow.jpg")`;
-  }}; */
-
-  // for one
-  /* background-image:  ${({ id }) =>
-    (id = "intro" ? `url("string.jpg")` : "red")}; */
-
-  // for all
   background-image: url("images/string.jpg");
 `;
 export const Product = styled.div`
   ${GeneralPageStyles}
+
   background-image: url("images/pillow.jpg");
 `;
 export const Contact = styled.div`
@@ -55,6 +43,7 @@ export const Holder = styled.div`
   flex-direction: column;
   width: 50%;
   height: 100vh;
+  
 `;
 
 export const Title = styled.h1`
@@ -63,13 +52,15 @@ export const Title = styled.h1`
 `;
 
 export const Subtitle = styled.h4`
-  font-size: 25px;
+  font-size: 50px;
+  font-family: "Tangerine", sans-serif;
 `;
 
 export const Text = styled.div`
   font-size: 20px;
   margin: 10px;
   width: 600px;
+
 `;
 
 export const Picture = styled.div`
@@ -82,7 +73,6 @@ export const Picture = styled.div`
 
   border-radius: 25px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
-  /* background-image: url(images/product/greyOnPink.jpg); */
   background-image: ${({ image }) => {
     if (image === "grey") return "url(images/product/greyOnPink.jpg)";
     if (image === "gold") return "url(images/product/goldOnPink.jpg)";

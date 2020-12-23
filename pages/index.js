@@ -1,8 +1,6 @@
 import Head from "next/head";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useState } from "react";
-
-// TODO: delete dotenv library (attempt on setting firebase)
 
 import {
   Wrapper,
@@ -16,7 +14,6 @@ import {
   Contact,
   Profile,
 
-  // Container,
 } from "styles/utils";
 import Navigation from "components/navigation";
 import Footer from "components/footer";
@@ -60,34 +57,18 @@ export default function Home({ product }) {
           <Product left>
             <Holder>
               <Subtitle>Description</Subtitle>
-              <Text>
-                Keep you hair in check with this {product.name}, there are
-                following color variations: (click to choose a color!)
-                <Products>
-                  {product.color.map((color) => (
-                    <Item
-                      key={color}
-                      color={color}
-                      onClick={() => setImage(color)}
-                    >
-                      {color}
-                    </Item>
-                  ))}
+              <Text>{product.description}</Text>
+              <Products>
+                {product.color.map((color) => (
+                  <Item
+                    key={color}
+                    color={color}
+                    onClick={() => setImage(color)}
+                    // style={{opacity:"1"}}
+                  />
+                ))}
+              </Products>
 
-                  {/* @TODO: USELESS: you can remvoe this
-                   <Item onClick={() => setImage("grey")}>Grey</Item>
-                  <Item onClick={() => setImage("gold")}>Gold</Item>
-                  <Item onClick={() => setImage("burgundy")}>Burgundy</Item>
-                  <Item color="black" onClick={() => setImage("black")}>
-                    Black
-                  </Item>
-                  <Item color="cream" onClick={() => setImage("cream")}>
-                    Cream
-                  </Item>
-                  <Item onClick={() => setImage("brown")}>Brown</Item> */}
-                </Products>
-                and it is made of silk.
-              </Text>
               <Text>
                 - Modern material <br />- Super Mega Amazing <br /> - Refined
                 design
@@ -152,54 +133,34 @@ export async function getStaticProps() {
 }
 
 // const Footer = styled.footer``;
+// TODO: fix opacity issue for parent element of item
 const Products = styled.div`
   display: flex;
-  /* flex-direction: column; */
-  width: 120px;
-  text-align: center;
+  width: 250px;
+  background-color: lightgray;
+  /* opacity: 0.5; */
+  justify-content: space-between;
+  border-radius: 25px;
+  margin: 15px;
+  padding: 10px;
 `;
 
-const GeneralProductStyles = css`
-  margin: 10px;
-  padding: 5px;
+const Item = styled.span`
+  /* opacity: 1; */
+  padding: 10px;
   cursor: pointer;
   border: 1px solid black;
-`;
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.75);
 
-// @TODO: Finish color matching
-const Item = styled.span`
-  ${GeneralProductStyles}
-  color: ${({ color }) => {
+  border-radius: 100%;
+
+  background-color: ${({ color }) => {
     if (color === "gold") return "gold";
     if (color === "black") return "#000";
-    if (color === "black") return "#000";
-    return "grey";
+    if (color === "burgundy") return "#800020";
+    if (color === "cream") return "#fffdd0";
+    if (color === "brown") return "brown";
+    if (color === "grey") return "grey";
+    return "lightskyblue";
   }};
 `;
-
-// @TODO: USELESS - you can remove this
-// const Gold = styled.span`
-//   ${GeneralProductStyles}
-//   color: gold;
-// `;
-// const Burgundy = styled.span`
-//   color: #800020;
-//   ${GeneralProductStyles}
-// `;
-
-// const Black = styled.span`
-//   color: black;
-//   ${GeneralProductStyles}
-// `;
-// const Cream = styled.span`
-//   color: #fffdd0;
-//   ${GeneralProductStyles}
-// `;
-// const Brown = styled.span`
-//   color: brown;
-//   ${GeneralProductStyles}
-// `;
-// const Grey = styled.span`
-//   color: grey;
-//   ${GeneralProductStyles}
-// `;
