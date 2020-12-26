@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { motion, AnimatePresence  } from "framer-motion";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -13,13 +14,12 @@ import {
   Product,
   Contact,
   Profile,
-
 } from "styles/utils";
 import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
 
-export default function Home({ product }) {
+export default function Home({ product, isVisible  }) {
   const [option, setOption] = useState("intro");
   const [image, setImage] = useState("gold");
 
@@ -64,6 +64,15 @@ export default function Home({ product }) {
                     key={color}
                     color={color}
                     onClick={() => setImage(color)}
+                    whileHover={{ scale: 1.2 }}
+                    onHoverStart={(e) => {}}
+                    onHoverEnd={(e) => {}}
+
+                    
+                    animate={{
+                      scale: [1, 0.8, 1],
+                    }}
+                    transition={{ repeat: Infinity, duration: 2 }}
                     // style={{opacity:"1"}}
                   />
                 ))}
@@ -75,7 +84,9 @@ export default function Home({ product }) {
               </Text>
             </Holder>
             <Holder>
-              <Picture image={image} />
+              <AnimatePresence>
+                <Picture image={image} />
+              </AnimatePresence>
             </Holder>
           </Product>
         )}
@@ -145,7 +156,7 @@ const Products = styled.div`
   padding: 10px;
 `;
 
-const Item = styled.span`
+const Item = styled(motion.span)`
   /* opacity: 1; */
   padding: 10px;
   cursor: pointer;

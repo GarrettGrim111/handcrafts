@@ -30,7 +30,7 @@ const Holder = styled.nav`
   font-size: 30px;
   position: fixed;
   right: 20px;
-  top: 15vh;
+  top: 5vh;
 `;
 
 const MenuItem = styled.span`

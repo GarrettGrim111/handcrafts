@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { motion } from "framer-motion";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -21,7 +22,6 @@ const GeneralPageStyles = css`
   background-size: cover;
 `;
 
-
 export const Intro = styled.div`
   ${GeneralPageStyles}
   background-image: url("images/string.jpg");
@@ -43,7 +43,6 @@ export const Holder = styled.div`
   flex-direction: column;
   width: 50%;
   height: 100vh;
-  
 `;
 
 export const Title = styled.h1`
@@ -60,12 +59,12 @@ export const Text = styled.div`
   font-size: 20px;
   margin: 10px;
   width: 600px;
-
 `;
 
-export const Picture = styled.div`
+export const Picture = styled(motion.img)`
   width: 400px;
   height: 500px;
+  /* z-index: 5; */
 
   background-position: center;
   background-repeat: no-repeat;
