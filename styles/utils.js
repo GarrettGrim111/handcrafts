@@ -1,7 +1,9 @@
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
-export const Wrapper = styled.div`
+// TODO: fix opacity issue for parent element of item
+
+export const Wrapper = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -22,16 +24,16 @@ const GeneralPageStyles = css`
   background-size: cover;
 `;
 
-export const Intro = styled.div`
+export const Intro = styled(motion.div)`
   ${GeneralPageStyles}
   background-image: url("images/string.jpg");
 `;
-export const Product = styled.div`
+export const Product = styled(motion.div)`
   ${GeneralPageStyles}
 
   background-image: url("images/pillow.jpg");
 `;
-export const Contact = styled.div`
+export const Contact = styled(motion.div)`
   ${GeneralPageStyles}
 `;
 
@@ -45,17 +47,17 @@ export const Holder = styled(motion.div)`
   height: 100vh;
 `;
 
-export const Title = styled.h1`
+export const Title = styled(motion.h1)`
   font-size: 60px;
   font-family: "TangerineBold", sans-serif;
 `;
 
-export const Subtitle = styled.h4`
+export const Subtitle = styled(motion.h4)`
   font-size: 50px;
   font-family: "Tangerine", sans-serif;
 `;
 
-export const Text = styled.div`
+export const Text = styled(motion.div)`
   font-size: 20px;
   margin: 10px;
   width: 600px;
@@ -69,7 +71,6 @@ export const Picture = styled(motion.div)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 
   border-radius: 25px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
@@ -90,7 +91,36 @@ export const Profile = styled(motion.div)`
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
   background-position: center;
   background-repeat: no-repeat;
-  /* background-size: cover; */
   object-fit: cover;
   background-image: url("images/villegas.jpg");
+`;
+
+export const Products = styled.div`
+  display: flex;
+  width: 250px;
+  background-color: lightgray;
+  /* opacity: 0.5; */
+  justify-content: space-between;
+  border-radius: 25px;
+  margin: 15px;
+  padding: 10px;
+`;
+
+export const Item = styled(motion.span)`
+  /* opacity: 1; */
+  padding: 10px;
+  cursor: pointer;
+  border: 1px solid black;
+  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.75);
+  border-radius: 100%;
+
+  background-color: ${({ color }) => {
+    if (color === "gold") return "gold";
+    if (color === "black") return "#000";
+    if (color === "burgundy") return "#800020";
+    if (color === "cream") return "#fffdd0";
+    if (color === "brown") return "brown";
+    if (color === "grey") return "grey";
+    return "lightskyblue";
+  }};
 `;

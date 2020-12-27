@@ -4,30 +4,30 @@ import { motion } from "framer-motion";
 
 const Navigation = ({ option, setOption }) => {
   return (
+    // TODO: create one element and map it?
+
+    
     <Holder>
       <MenuItem
         option={option}
         name="intro"
         onClick={() => setOption("intro")}
         whileHover={{ scale: 1.2 }}
-        onHoverStart={(e) => {}}
-        onHoverEnd={(e) => {}}
+        whileTap={{ scale: 0.95 }}
       />
       <MenuItem
         option={option}
         name="product"
         onClick={() => setOption("product")}
         whileHover={{ scale: 1.2 }}
-        onHoverStart={(e) => {}}
-        onHoverEnd={(e) => {}}
+        whileTap={{ scale: 0.95 }}
       />
       <MenuItem
         option={option}
         name="contact"
         onClick={() => setOption("contact")}
         whileHover={{ scale: 1.2 }}
-        onHoverStart={(e) => {}}
-        onHoverEnd={(e) => {}}
+        whileTap={{ scale: 0.8 }}
       />
     </Holder>
   );
@@ -45,7 +45,6 @@ const Holder = styled.nav`
 `;
 
 const MenuItem = styled(motion.span)`
-
   cursor: pointer;
   margin: 1rem 0;
   width: 40px;

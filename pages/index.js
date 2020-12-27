@@ -1,6 +1,4 @@
 import Head from "next/head";
-import { motion, AnimatePresence } from "framer-motion";
-import styled from "styled-components";
 import { useState } from "react";
 
 import {
@@ -14,10 +12,23 @@ import {
   Product,
   Contact,
   Profile,
+  Products,
+  Item,
 } from "styles/utils";
+
+import {
+  Stagger,
+  TextDrop,
+  PictureChange,
+  ProfileChange,
+} from "components/animations";
+
 import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
+
+// TODO:
+// pulsing animation (scale) for active color-item
 
 export default function Home({ product }) {
   const [option, setOption] = useState("intro");
@@ -41,34 +52,32 @@ export default function Home({ product }) {
         />
       </Head>
 
-      <Wrapper>
+      <Wrapper initial="initial" animate="animate">
         <Navigation option={option} setOption={setOption} />
         {option === "intro" && (
-          <Intro id="intro">
-            <Holder
-              initial={{ y: -150, opacity: 0 }}
-              animate={{ y: -20, opacity: 1}}
-            >
-              <Title>Craft with Story</Title>
-              <Subtitle>Hand-made products</Subtitle>
+          <Intro id="intro" variants={Stagger}>
+            <Holder>
+              <Title variants={TextDrop}>Craft with Story</Title>
+              <Subtitle variants={TextDrop}>Hand-made products</Subtitle>
             </Holder>
           </Intro>
         )}
 
         {option === "product" && (
-          <Product left>
+          <Product left variants={Stagger}>
             <Holder>
-              <Subtitle>Description</Subtitle>
-              <Text>{product.description}</Text>
-              <Products>
-                {product.color.map((color, current) => (
+              <Subtitle variants={TextDrop}>Description</Subtitle>
+              <Text variants={TextDrop}>{product.description}</Text>
+              <Products variants={TextDrop}>
+                {product.color.map((color) => (
                   <Item
                     key={color}
                     color={color}
                     onClick={() => setImage(color)}
                     whileHover={{ scale: 1.2 }}
-                    onHoverStart={(e) => {}}
-                    onHoverEnd={(e) => {}}
+                    whileTap={{ scale: 0.8 }}
+
+                    // pulsing animation (scale) for active color-item
 
                     // animate={{
                     //   scale: [1, 0.8, 1],
@@ -79,36 +88,25 @@ export default function Home({ product }) {
                 ))}
               </Products>
 
-              <Text>
+              <Text variants={TextDrop}>
                 - Modern material <br />- Super Mega Amazing <br /> - Refined
                 design
               </Text>
             </Holder>
             <Holder>
-              <AnimatePresence>
-                <Picture
-                  image={image}
-                  key={image}
-                  initial={{ x: 150, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -150, opacity: 0 }}
-                />
-              </AnimatePresence>
+              <Picture image={image} key={image} variants={PictureChange} />
             </Holder>
           </Product>
         )}
 
         {option === "contact" && (
-          <Contact>
+          <Contact variants={Stagger}>
             <Holder>
-              <Profile
-                initial={{ x: -150, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-              />
+              <Profile variants={ProfileChange} />
             </Holder>
             <Holder>
-              <Subtitle>About me</Subtitle>
-              <Text>
+              <Subtitle variants={TextDrop}>About me</Subtitle>
+              <Text variants={TextDrop}>
                 Duis sed erat vel magna viverra lobortis. Morbi dolor ipsum,
                 maximus vitae suscipit quis, tempor a purus. Etiam massa nulla,
                 venenatis in suscipit eget, consectetur id dui. Proin vestibulum
@@ -125,11 +123,13 @@ export default function Home({ product }) {
                 sit amet risus vel massa facilisis lobortis. Fusce iaculis et
                 nisl id bibendum.
               </Text>
-              <Text>If you like my work, contact is bellow.</Text>
+              <Text variants={TextDrop}>
+                If you like my work, contact is bellow.
+              </Text>
             </Holder>
             <Footer
-              initial={{ y: -150, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
+            // initial={{ y: -150, opacity: 0 }}
+            // animate={{ y: 0, opacity: 1 }}
             />
           </Contact>
         )}
@@ -155,36 +155,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-// const Footer = styled.footer``;
-// TODO: fix opacity issue for parent element of item
-const Products = styled.div`
-  display: flex;
-  width: 250px;
-  background-color: lightgray;
-  /* opacity: 0.5; */
-  justify-content: space-between;
-  border-radius: 25px;
-  margin: 15px;
-  padding: 10px;
-`;
-
-const Item = styled(motion.span)`
-  /* opacity: 1; */
-  padding: 10px;
-  cursor: pointer;
-  border: 1px solid black;
-  box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.75);
-
-  border-radius: 100%;
-
-  background-color: ${({ color }) => {
-    if (color === "gold") return "gold";
-    if (color === "black") return "#000";
-    if (color === "burgundy") return "#800020";
-    if (color === "cream") return "#fffdd0";
-    if (color === "brown") return "brown";
-    if (color === "grey") return "grey";
-    return "lightskyblue";
-  }};
-`;
