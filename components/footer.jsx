@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 // import { Text } from "styles/utils";
 
 const Footer = () => {
@@ -10,9 +11,9 @@ const Footer = () => {
   );
 };
 
-const Container = styled.footer`
+const Container = styled(motion.footer)`
   width: 100%;
-  box-shadow: 0px -10px 26px 0px rgba(0,0,0,0.69);
+  box-shadow: 0px -10px 26px 0px rgba(0, 0, 0, 0.69);
   background: linear-gradient(
     90deg,
     rgba(20, 66, 181, 1) 0%,

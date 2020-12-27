@@ -35,7 +35,7 @@ export const Contact = styled.div`
   ${GeneralPageStyles}
 `;
 
-export const Holder = styled.div`
+export const Holder = styled(motion.div)`
   background-color: unset;
   display: flex;
   justify-content: center;
@@ -61,7 +61,7 @@ export const Text = styled.div`
   width: 600px;
 `;
 
-export const Picture = styled(motion.img)`
+export const Picture = styled(motion.div)`
   width: 400px;
   height: 500px;
   /* z-index: 5; */
@@ -69,6 +69,7 @@ export const Picture = styled(motion.img)`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
 
   border-radius: 25px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
@@ -82,7 +83,7 @@ export const Picture = styled(motion.img)`
   }};
 `;
 
-export const Profile = styled.div`
+export const Profile = styled(motion.div)`
   width: 600px;
   height: 400px;
   border-radius: 25px;

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { motion, AnimatePresence  } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { useState } from "react";
 
@@ -19,11 +19,10 @@ import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
 
-export default function Home({ product, isVisible  }) {
+export default function Home({ product }) {
   const [option, setOption] = useState("intro");
   const [image, setImage] = useState("gold");
 
-  console.log(product);
   return (
     <div>
       <Head>
@@ -46,7 +45,10 @@ export default function Home({ product, isVisible  }) {
         <Navigation option={option} setOption={setOption} />
         {option === "intro" && (
           <Intro id="intro">
-            <Holder>
+            <Holder
+              initial={{ y: -150, opacity: 0 }}
+              animate={{ y: -20, opacity: 1}}
+            >
               <Title>Craft with Story</Title>
               <Subtitle>Hand-made products</Subtitle>
             </Holder>
@@ -59,7 +61,7 @@ export default function Home({ product, isVisible  }) {
               <Subtitle>Description</Subtitle>
               <Text>{product.description}</Text>
               <Products>
-                {product.color.map((color) => (
+                {product.color.map((color, current) => (
                   <Item
                     key={color}
                     color={color}
@@ -68,11 +70,10 @@ export default function Home({ product, isVisible  }) {
                     onHoverStart={(e) => {}}
                     onHoverEnd={(e) => {}}
 
-                    
-                    animate={{
-                      scale: [1, 0.8, 1],
-                    }}
-                    transition={{ repeat: Infinity, duration: 2 }}
+                    // animate={{
+                    //   scale: [1, 0.8, 1],
+                    // }}
+                    // transition={{ repeat: Infinity, duration: 2 }}
                     // style={{opacity:"1"}}
                   />
                 ))}
@@ -85,7 +86,13 @@ export default function Home({ product, isVisible  }) {
             </Holder>
             <Holder>
               <AnimatePresence>
-                <Picture image={image} />
+                <Picture
+                  image={image}
+                  key={image}
+                  initial={{ x: 150, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -150, opacity: 0 }}
+                />
               </AnimatePresence>
             </Holder>
           </Product>
@@ -94,7 +101,10 @@ export default function Home({ product, isVisible  }) {
         {option === "contact" && (
           <Contact>
             <Holder>
-              <Profile />
+              <Profile
+                initial={{ x: -150, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+              />
             </Holder>
             <Holder>
               <Subtitle>About me</Subtitle>
@@ -117,7 +127,10 @@ export default function Home({ product, isVisible  }) {
               </Text>
               <Text>If you like my work, contact is bellow.</Text>
             </Holder>
-            <Footer />
+            <Footer
+              initial={{ y: -150, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            />
           </Contact>
         )}
       </Wrapper>
