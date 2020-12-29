@@ -16,7 +16,7 @@ export const Stagger = {
 
 export const PictureChange = {
   initial: { x: 150, y: -20, opacity: 0 },
-  animate: { x: 0, opacity: 1, transition: { delay: 0.9 } },
+  animate: { x: 0, opacity: 1 },
   exit: { x: -150, y: 40, opacity: 0 },
 };
 
@@ -24,3 +24,5 @@ export const ProfileChange = {
   initial: { x: -150, opacity: 0 },
   animate: { x: 0, opacity: 1, transition: { delay: 1.5 } },
 };
+
+

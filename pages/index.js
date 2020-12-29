@@ -1,5 +1,9 @@
 import Head from "next/head";
+
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import useTranslation from "next-translate/useTranslation";
+import LanguageSwitcher from "./../components/languageSwitcher";
 
 import {
   Wrapper,
@@ -19,26 +23,30 @@ import {
 import {
   Stagger,
   TextDrop,
-  PictureChange,
+  // PictureChange,
   ProfileChange,
-} from "components/animations";
+} from "components/animations.js";
 
 import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
 
-// TODO:
-// pulsing animation (scale) for active color-item
+// TODO: pulsing animation (scale) for active color-item
+// TODO: solve animatation responsivity
+// TODO: solve product animation (pick the suitable type)
+// TODO: solve  responsivity
 
 export default function Home({ product }) {
   const [option, setOption] = useState("intro");
   const [image, setImage] = useState("gold");
 
+  let { t } = useTranslation();
+
   return (
     <div>
       <Head>
         <title>HandCrafts</title>
-        <link
+        {/* <link
           rel="preload"
           href="fonts/Tangerine-Regular.ttf"
           as="font"
@@ -49,16 +57,20 @@ export default function Home({ product }) {
           href="fonts/Tangerine-Bold.ttf"
           as="font"
           crossOrigin=""
-        />
+        /> */}
       </Head>
 
       <Wrapper initial="initial" animate="animate">
+        <LanguageSwitcher />
+
         <Navigation option={option} setOption={setOption} />
         {option === "intro" && (
           <Intro id="intro" variants={Stagger}>
             <Holder>
-              <Title variants={TextDrop}>Craft with Story</Title>
-              <Subtitle variants={TextDrop}>Hand-made products</Subtitle>
+              <Title variants={TextDrop}>{t("common:mainTitle")}</Title>
+              <Subtitle variants={TextDrop}>
+                {t("common:mainSubtitle")}
+              </Subtitle>
             </Holder>
           </Intro>
         )}
@@ -66,9 +78,11 @@ export default function Home({ product }) {
         {option === "product" && (
           <Product left variants={Stagger}>
             <Holder>
-              <Subtitle variants={TextDrop}>Description</Subtitle>
+              <Subtitle variants={TextDrop}>
+                {t("common:productTitle")}
+              </Subtitle>
               <Text variants={TextDrop}>{product.description}</Text>
-              <Products variants={TextDrop}>
+              <Products variants={ProfileChange}>
                 {product.color.map((color) => (
                   <Item
                     key={color}
@@ -94,7 +108,18 @@ export default function Home({ product }) {
               </Text>
             </Holder>
             <Holder>
-              <Picture image={image} key={image} variants={PictureChange} />
+              {/* we can keep AnimatePresence here together with animation settings for animation on element leaving DOM
+  or keep animation setting in animation folder + varian .... but it takes away possibility of animated leaving */}
+              <AnimatePresence>
+                <Picture
+                  image={image}
+                  key={image}
+                  // variants={PictureChange}
+                  initial={{ x: 150, y: -20, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -150, y: 40, opacity: 0 }}
+                />
+              </AnimatePresence>
             </Holder>
           </Product>
         )}
@@ -105,27 +130,11 @@ export default function Home({ product }) {
               <Profile variants={ProfileChange} />
             </Holder>
             <Holder>
-              <Subtitle variants={TextDrop}>About me</Subtitle>
-              <Text variants={TextDrop}>
-                Duis sed erat vel magna viverra lobortis. Morbi dolor ipsum,
-                maximus vitae suscipit quis, tempor a purus. Etiam massa nulla,
-                venenatis in suscipit eget, consectetur id dui. Proin vestibulum
-                enim id eros egestas placerat. Pellentesque habitant morbi
-                tristique senectus et netus et malesuada fames ac turpis
-                egestas. Praesent odio urna, faucibus in cursus in, finibus et
-                nisi. Donec elit lorem, luctus a sollicitudin a, eleifend et
-                dolor. Nullam sit amet lectus a velit blandit rhoncus vel et
-                enim. Etiam convallis lectus sit amet odio porta aliquam.
-                Quisque nulla sapien, fringilla eget aliquam vitae, faucibus
-                condimentum ligula. Etiam semper malesuada arcu, et venenatis mi
-                dictum id. Nulla sollicitudin, urna eu interdum vulputate, purus
-                tortor varius nunc, sed porttitor turpis lacus sed neque. Morbi
-                sit amet risus vel massa facilisis lobortis. Fusce iaculis et
-                nisl id bibendum.
-              </Text>
-              <Text variants={TextDrop}>
-                If you like my work, contact is bellow.
-              </Text>
+              <Subtitle variants={TextDrop}>
+                {t("common:profileTitle")}
+              </Subtitle>
+              <Text variants={TextDrop}>{t("common:profileDescription")}</Text>
+              <Text variants={TextDrop}>{t("common:subtext")}</Text>
             </Holder>
             <Footer
             // initial={{ y: -150, opacity: 0 }}

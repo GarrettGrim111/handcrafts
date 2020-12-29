@@ -1,4 +1,3 @@
-// import { RiRecordCircleFill, RiCheckboxBlankCircleFill } from "react-icons/ri";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -6,28 +5,27 @@ const Navigation = ({ option, setOption }) => {
   return (
     // TODO: create one element and map it?
 
-    
     <Holder>
       <MenuItem
         option={option}
         name="intro"
         onClick={() => setOption("intro")}
-        whileHover={{ scale: 1.2 }}
+        whileHover={{ scale: 1.3 }}
         whileTap={{ scale: 0.95 }}
       />
       <MenuItem
         option={option}
         name="product"
         onClick={() => setOption("product")}
-        whileHover={{ scale: 1.2 }}
+        whileHover={{ scale: 1.3 }}
         whileTap={{ scale: 0.95 }}
       />
       <MenuItem
         option={option}
         name="contact"
         onClick={() => setOption("contact")}
-        whileHover={{ scale: 1.2 }}
-        whileTap={{ scale: 0.8 }}
+        whileHover={{ scale: 1.3 }}
+        whileTap={{ scale: 0.95 }}
       />
     </Holder>
   );
@@ -40,7 +38,7 @@ const Holder = styled.nav`
   font-size: 30px;
   position: fixed;
   right: 20px;
-  top: 5vh;
+  top: 15vh;
   z-index: 15;
 `;
 

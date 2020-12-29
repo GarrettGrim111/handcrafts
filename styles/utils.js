@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 // TODO: fix opacity issue for parent element of item
+// TODO: fix opacity issue for parent element of item
 
 export const Wrapper = styled(motion.div)`
   display: flex;
@@ -47,14 +48,16 @@ export const Holder = styled(motion.div)`
   height: 100vh;
 `;
 
+// if i use backup font, then its prerenders and glitches
+
 export const Title = styled(motion.h1)`
   font-size: 60px;
-  font-family: "TangerineBold", sans-serif;
+  font-family: "TangerineBold", serif;
 `;
 
 export const Subtitle = styled(motion.h4)`
   font-size: 50px;
-  font-family: "Tangerine", sans-serif;
+  font-family: "Tangerine", serif;
 `;
 
 export const Text = styled(motion.div)`
@@ -95,11 +98,11 @@ export const Profile = styled(motion.div)`
   background-image: url("images/villegas.jpg");
 `;
 
-export const Products = styled.div`
+export const Products = styled(motion.div)`
+  /* opacity: 0.5; */
   display: flex;
   width: 250px;
   background-color: lightgray;
-  /* opacity: 0.5; */
   justify-content: space-between;
   border-radius: 25px;
   margin: 15px;
