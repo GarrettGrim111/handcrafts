@@ -46,18 +46,11 @@ export default function Home({ product }) {
     <div>
       <Head>
         <title>HandCrafts</title>
-        {/* <link
-          rel="preload"
-          href="fonts/Tangerine-Regular.ttf"
-          as="font"
-          crossOrigin=""
-        />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          rel="preload"
-          href="fonts/Tangerine-Bold.ttf"
-          as="font"
-          crossOrigin=""
-        /> */}
+          href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap"
+          rel="stylesheet"
+        />
       </Head>
 
       <Wrapper initial="initial" animate="animate">
@@ -134,6 +127,7 @@ export default function Home({ product }) {
                 {t("common:profileTitle")}
               </Subtitle>
               <Text variants={TextDrop}>{t("common:profileDescription")}</Text>
+              <Text variants={TextDrop}>{t("common:profileDescription2")}</Text>
               <Text variants={TextDrop}>{t("common:subtext")}</Text>
             </Holder>
             <Footer

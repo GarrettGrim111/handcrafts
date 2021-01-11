@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-// import { Text } from "styles/utils";
+import useTranslation from "next-translate/useTranslation";
 
 const Footer = () => {
+  let { t } = useTranslation();
+
   return (
     <Container>
-      <span>Phone : 666 666 666</span>
-      <span>email: littleApple@haynaku.com</span>
+      <span> {t("common:phone")} : 666 666 666</span>
+      <span>Email: littleApple@haynaku.com</span>
     </Container>
   );
 };

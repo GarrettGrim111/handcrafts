@@ -23,9 +23,10 @@ const Holder = styled.div`
   width: 150px;
   font-size: 20px;
   position: fixed;
-  right: 20px;
+  right: 60px;
   top: 2vh;
   z-index: 15;
+ 
 `;
 
 const Language = styled.span`

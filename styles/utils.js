@@ -51,13 +51,14 @@ export const Holder = styled(motion.div)`
 // if i use backup font, then its prerenders and glitches
 
 export const Title = styled(motion.h1)`
-  font-size: 60px;
-  font-family: "TangerineBold", serif;
+  font-size: 80px;
+  font-family: "Tangerine", cursive;
+  font-weight: bolder;
 `;
 
 export const Subtitle = styled(motion.h4)`
   font-size: 50px;
-  font-family: "Tangerine", serif;
+  font-family: "Tangerine", cursive;
 `;
 
 export const Text = styled(motion.div)`
