@@ -2,14 +2,15 @@ import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 
 // TODO: fix opacity issue for parent element of item
-// TODO: fix opacity issue for parent element of item
+
 
 export const Wrapper = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
-  max-width: 1900px;
+ 
+ 
   flex-direction: column;
   position: relative;
 `;
@@ -48,7 +49,6 @@ export const Holder = styled(motion.div)`
   height: 100vh;
 `;
 
-// if i use backup font, then its prerenders and glitches
 
 export const Title = styled(motion.h1)`
   font-size: 80px;
@@ -61,16 +61,17 @@ export const Subtitle = styled(motion.h4)`
   font-family: "Tangerine", cursive;
 `;
 
-export const Text = styled(motion.div)`
+export const Text = styled(motion.p)`
   font-size: 20px;
   margin: 10px;
   width: 600px;
+  text-align: justify;
+  /* margin-bottom: ${({ bottom }) => (bottom ? "2rem" : 0)}; */
 `;
 
 export const Picture = styled(motion.div)`
   width: 400px;
   height: 500px;
-  /* z-index: 5; */
 
   background-position: center;
   background-repeat: no-repeat;

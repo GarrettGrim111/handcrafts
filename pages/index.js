@@ -33,8 +33,8 @@ import { firestore } from "firebase/utils";
 
 // TODO: pulsing animation (scale) for active color-item
 // TODO: solve animatation responsivity
-// TODO: solve product animation (pick the suitable type)
 // TODO: solve  responsivity
+// TODO: solve product animation (pick the suitable type)
 
 export default function Home({ product }) {
   const [option, setOption] = useState("intro");
@@ -74,7 +74,7 @@ export default function Home({ product }) {
               <Subtitle variants={TextDrop}>
                 {t("common:productTitle")}
               </Subtitle>
-              <Text variants={TextDrop}>{product.description}</Text>
+              <Text variants={TextDrop}> {t("common:productDescription")}</Text>
               <Products variants={ProfileChange}>
                 {product.color.map((color) => (
                   <Item
@@ -96,8 +96,11 @@ export default function Home({ product }) {
               </Products>
 
               <Text variants={TextDrop}>
-                - Modern material <br />- Super Mega Amazing <br /> - Refined
-                design
+                <Text>{t("common:material")}</Text>
+                <Text>{t("common:productDetail1")}</Text>
+                <Text>{t("common:productDetail2")}</Text>
+                <Text>{t("common:productDetail3")}</Text>
+                <Text>{t("common:productDetail4")}</Text>
               </Text>
             </Holder>
             <Holder>
@@ -141,20 +144,31 @@ export default function Home({ product }) {
   );
 }
 
+// here use hook from translation to check domain suffix and use suitable collection
+
 export async function getStaticProps() {
   let product;
 
   await firestore
     .collection("products")
-    .doc("Tr8Q0ojRHguidi7v6O7R")
+    .doc("Tr8Q0ojRHguidi7v6O7R") 
     .get()
     .then((doc) => (product = doc.data()));
 
-  // By returning { props: data }, the Blog component
-  // will receive `data` as a prop at build time
+  // hardcode calling sub-collection product data for translation
+
+  // let de;
+  // await firestore
+  //   .collection("products")
+  //   .doc("Tr8Q0ojRHguidi7v6O7R")
+  //   .collection("de")
+  //   .doc("de");
+  // get().then((doc) => (de = doc.data()));
+
   return {
     props: {
       product,
+      // de,
     },
   };
 }

@@ -23,6 +23,7 @@ body {
 
 html {
   scroll-behavior: smooth;
+  
 }
 
 a {
