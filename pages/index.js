@@ -18,6 +18,7 @@ import {
   Profile,
   Products,
   Item,
+  Cover,
 } from "styles/utils";
 
 import {
@@ -69,41 +70,45 @@ export default function Home({ product }) {
         )}
 
         {option === "product" && (
-          <Product left variants={Stagger}>
-            <Holder>
-              <Subtitle variants={TextDrop}>
-                {t("common:productTitle")}
-              </Subtitle>
-              <Text variants={TextDrop}> {t("common:productDescription")}</Text>
-              <Products variants={ProfileChange}>
-                {product.color.map((color) => (
-                  <Item
-                    key={color}
-                    color={color}
-                    onClick={() => setImage(color)}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.8 }}
+          <Product variants={Stagger}>
+            <Holder product>
+              <Cover>
+                <Subtitle variants={TextDrop}>
+                  {t("common:productTitle")}
+                </Subtitle>
+                <Text variants={TextDrop}>
+                  {t("common:productDescription")}
+                </Text>
+                <Products variants={ProfileChange}>
+                  {product.color.map((color) => (
+                    <Item
+                      key={color}
+                      color={color}
+                      onClick={() => setImage(color)}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
 
-                    // pulsing animation (scale) for active color-item
+                      // pulsing animation (scale) for active color-item
 
-                    // animate={{
-                    //   scale: [1, 0.8, 1],
-                    // }}
-                    // transition={{ repeat: Infinity, duration: 2 }}
-                    // style={{opacity:"1"}}
-                  />
-                ))}
-              </Products>
+                      // animate={{
+                      //   scale: [1, 0.8, 1],
+                      // }}
+                      // transition={{ repeat: Infinity, duration: 2 }}
+                      // style={{opacity:"1"}}
+                    />
+                  ))}
+                </Products>
 
-              <Text variants={TextDrop}>
-                <Text>{t("common:material")}</Text>
-                <Text>{t("common:productDetail1")}</Text>
-                <Text>{t("common:productDetail2")}</Text>
-                <Text>{t("common:productDetail3")}</Text>
-                <Text>{t("common:productDetail4")}</Text>
-              </Text>
+                <Text variants={TextDrop}>
+                  <Text>{t("common:material")}</Text>
+                  <Text>{t("common:productDetail1")}</Text>
+                  <Text>{t("common:productDetail2")}</Text>
+                  <Text>{t("common:productDetail3")}</Text>
+                  <Text>{t("common:productDetail4")}</Text>
+                </Text>
+              </Cover>
             </Holder>
-            <Holder>
+            <Holder picture>
               {/* we can keep AnimatePresence here together with animation settings for animation on element leaving DOM
   or keep animation setting in animation folder + varian .... but it takes away possibility of animated leaving */}
               <AnimatePresence>
@@ -122,10 +127,10 @@ export default function Home({ product }) {
 
         {option === "contact" && (
           <Contact variants={Stagger}>
-            <Holder>
+            <Holder picture>
               <Profile variants={ProfileChange} />
             </Holder>
-            <Holder>
+            <Holder profile>
               <Subtitle variants={TextDrop}>
                 {t("common:profileTitle")}
               </Subtitle>
@@ -151,7 +156,7 @@ export async function getStaticProps() {
 
   await firestore
     .collection("products")
-    .doc("Tr8Q0ojRHguidi7v6O7R") 
+    .doc("Tr8Q0ojRHguidi7v6O7R")
     .get()
     .then((doc) => (product = doc.data()));
 

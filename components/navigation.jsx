@@ -36,10 +36,18 @@ const Holder = styled.nav`
   flex-direction: column;
   width: 40px;
   font-size: 30px;
-  position: fixed;
-  right: 20px;
+  position: absolute;
+  right: 5vh;
   top: 15vh;
   z-index: 15;
+
+  @media (max-width: 1600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    top: 2vh;
+    left: 2vh;
+    width: 180px;
+  }
 `;
 
 const MenuItem = styled(motion.span)`
@@ -47,6 +55,7 @@ const MenuItem = styled(motion.span)`
   margin: 1rem 0;
   width: 40px;
   height: 40px;
+  background-repeat: no-repeat;
   background-size: 100%;
   background-image: ${({ option, name }) =>
     option === name ? "url(images/blue.png)" : "url(images/red.png)"};

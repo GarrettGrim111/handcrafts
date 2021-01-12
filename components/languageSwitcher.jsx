@@ -22,11 +22,14 @@ const Holder = styled.div`
   justify-content: space-between;
   width: 150px;
   font-size: 20px;
-  position: fixed;
-  right: 60px;
-  top: 2vh;
+  position: absolute;
+  right: 5vh;
+  top: 4vh;
   z-index: 15;
- 
+
+  /* @media (max-width: 1300px) {
+    position: absolute;
+  } */
 `;
 
 const Language = styled.span`
