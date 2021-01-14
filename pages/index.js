@@ -41,6 +41,9 @@ export default function Home({ product }) {
   const [option, setOption] = useState("intro");
   const [image, setImage] = useState("gold");
 
+  console.log(product);
+  
+
   let { t } = useTranslation();
 
   return (
@@ -154,26 +157,35 @@ export default function Home({ product }) {
 export async function getStaticProps() {
   let product;
 
+  let de;
+
   await firestore
     .collection("products")
+    // .where("locale", "==", "en-US")
     .doc("Tr8Q0ojRHguidi7v6O7R")
     .get()
     .then((doc) => (product = doc.data()));
 
+  await firestore
+    .collection("products")
+    // .where("locale", "==", "en-US")
+    .doc("Tr8Q0ojRHguidi7v6O7R")
+    .collection("de")
+    .doc("de")
+    .get()
+    .then((doc) => (de = doc.data()));
+
   // hardcode calling sub-collection product data for translation
 
-  // let de;
   // await firestore
   //   .collection("products")
+  //   // .where("locale", "==", "de")
   //   .doc("Tr8Q0ojRHguidi7v6O7R")
-  //   .collection("de")
-  //   .doc("de");
-  // get().then((doc) => (de = doc.data()));
 
   return {
     props: {
       product,
-      // de,
+      de,
     },
   };
 }

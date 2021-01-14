@@ -138,7 +138,7 @@ export const Subtitle = styled(motion.h4)`
   font-family: "Tangerine", cursive;
 `;
 
-export const Text = styled(motion.p)`
+export const Text = styled(motion.span)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,12 +214,12 @@ export const Item = styled(motion.span)`
   border-radius: 100%;
 
   background-color: ${({ color }) => {
-    if (color === "gold") return "gold";
-    if (color === "black") return "#000";
-    if (color === "burgundy") return "#800020";
-    if (color === "cream") return "#fffdd0";
-    if (color === "brown") return "brown";
-    if (color === "grey") return "grey";
+    if (color === "gold") return "#f1ff33";
+    if (color === "black") return "#090202";
+    if (color === "burgundy") return "#860c0c";
+    if (color === "cream") return "#f8f5f3";
+    if (color === "brown") return "#67360e";
+    if (color === "grey") return "#574f4f";
     return "lightskyblue";
   }};
 `;

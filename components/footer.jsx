@@ -7,8 +7,8 @@ const Footer = () => {
 
   return (
     <Container>
-      <span> {t("common:phone")} : 666 666 666</span>
-      <span>Email: littleApple@haynaku.com</span>
+      <span> {t("common:phone")} : +491 521 056 4212</span>
+      <span>Email: applejayshandcraft07@gmail.com</span>
     </Container>
   );
 };
@@ -30,8 +30,7 @@ const Container = styled(motion.footer)`
   padding: 1rem 0;
   font-weight: bold;
 
-  @media (max-width: 800px) {
-    /* justify-content: center; */
+  @media (max-width: 700px) {
     flex-wrap: wrap;
   }
 `;
