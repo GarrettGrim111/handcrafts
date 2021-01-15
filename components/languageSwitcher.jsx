@@ -29,15 +29,9 @@ const Holder = styled.div`
   background-color: rgba(218, 223, 225, 0.6);
   border-radius: 25px;
   padding: 10px;
-
-  /* @media (max-width: 1300px) {
-    position: absolute;
-  } */
 `;
 
 const Language = styled.span`
-  /* display: flex;
-  justify-content: space-between; */
   text-decoration: none;
 `;
 

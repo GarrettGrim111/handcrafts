@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Navigation = ({ option, setOption }) => {
   return (
-    // TODO: create one element and map it?
+
 
     <Holder>
       <MenuItem

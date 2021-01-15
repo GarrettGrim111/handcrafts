@@ -12,7 +12,6 @@ export const Wrapper = styled(motion.div)`
 
 const GeneralPageStyles = css`
   display: flex;
-  /* justify-content: ${({ right }) => (right ? "flex-start" : "flex-end")}; */
   min-height: 100vh;
   width: 100%;
   background-color: lightblue;
@@ -58,37 +57,8 @@ export const Holder = styled(motion.div)`
   width: inherit;
   height: 100vh;
 
-  /* ${({ product }) =>
-    product &&
-    `
-  //   @media (max-width: 1350px) {
-  //   width: auto;
-  //   height: 90vh;
-  //   margin-top: 20px;
-  // }
-  
-  @media (max-width: 700px) {
-    width: auto;
-    height: 100vh;
-    margin-top: 8vh;
-  }
-  `}
 
-  ${({ profile }) =>
-    profile &&
-    `@media (max-width: 1300px) {
-    width: auto;
-    height: 65vh;
-    
-  }
-  
-  @media (max-width: 700px) {
-    width: auto;
-    height: 80vh;
-  }
-  `} */
-
-${({ picture }) =>
+  ${({ picture }) =>
     picture &&
     ` @media (max-width: 1350px) {
     // width: auto;
@@ -103,7 +73,7 @@ ${({ picture }) =>
 `;
 
 export const Cover = styled(motion.div)`
-  background-color: rgba(218, 223, 225, 0.6);
+  background-color: rgba(218, 223, 225, 0.7);
   border-radius: 5px;
   text-align: center;
   display: flex;
@@ -112,37 +82,20 @@ export const Cover = styled(motion.div)`
   flex-direction: column;
   margin-top: 20px;
 
-  /* @media (max-width: 700px) {
-    width: auto;
-    margin: 300px 0 100px 0;
-  } */
 
-
- ${({ product }) =>
+  ${({ product }) =>
     product &&
-    `
-  //   @media (max-width: 1350px) {
-  //   width: auto;
-  //   height: 90vh;
-  //   margin-top: 20px;
-  // }
-  
-  @media (max-width: 700px) {
+    `@media (max-width: 700px) {
     width: auto;
     margin-top: 15vh;
   }
-  `} 
-
-
-
-  
+  `}
 `;
 export const Title = styled(motion.h1)`
   font-size: 80px;
   font-family: "Tangerine", cursive;
   font-weight: bolder;
   padding: 10px;
-
 `;
 
 export const Subtitle = styled(motion.h4)`
@@ -151,7 +104,6 @@ export const Subtitle = styled(motion.h4)`
   text-align: center;
   font-family: "Tangerine", cursive;
   padding: 10px;
- 
 `;
 
 export const Text = styled(motion.span)`
@@ -163,8 +115,7 @@ export const Text = styled(motion.span)`
   margin: 10px;
   padding: 5px;
   width: 600px;
-  /* text-align: center; */
-  /* margin-bottom: ${({ bottom }) => (bottom ? "2rem" : 0)}; */
+
   @media (max-width: 700px) {
     width: 450px;
     height: auto;
@@ -188,7 +139,7 @@ export const Picture = styled(motion.div)`
     if (image === "burgundy") return "url(images/product/burgundyOnPink.jpg)";
   }};
 
-@media (max-width: 700px) {
+  @media (max-width: 700px) {
     margin-top: 10vh;
   }
 `;
@@ -201,10 +152,6 @@ export const Profile = styled(motion.div)`
   background-repeat: no-repeat;
   object-fit: cover;
   background-image: url("images/villegas.jpg");
-
-  @media (max-width: 1300px) {
-    /* width: 70vh; */
-  }
 
   @media (max-width: 700px) {
     width: 400px;

@@ -16,12 +16,6 @@ const Footer = () => {
 const Container = styled(motion.footer)`
   width: 100%;
   box-shadow: 0px -10px 26px 0px rgba(0, 0, 0, 0.39);
-  /* background: linear-gradient(
-    90deg,
-    rgba(20, 66, 181, 1) 0%,
-    rgba(0, 212, 255, 1) 50%,
-    rgba(20, 66, 181, 1) 100%
-  ); */
   background-color: rgba(218, 223, 225, 0.6);
   display: flex;
   justify-content: space-around;

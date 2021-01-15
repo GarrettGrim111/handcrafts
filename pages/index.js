@@ -21,20 +21,13 @@ import {
   Cover,
 } from "styles/utils";
 
-import {
-  Stagger,
-  TextDrop,
-  // PictureChange,
-  ProfileChange,
-} from "components/animations.js";
+import { Stagger, TextDrop, ProfileChange } from "components/animations.js";
 
 import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
 
-// TODO: pulsing animation (scale) for active color-item
 // TODO: solve animatation responsivity
-// TODO: solve  responsivity
 // TODO: solve product animation (pick the suitable type)
 
 export default function Home({ product }) {
@@ -76,7 +69,7 @@ export default function Home({ product }) {
 
         {option === "product" && (
           <Product variants={Stagger}>
-            <Holder product>
+            <Holder>
               <Cover product>
                 <Subtitle variants={TextDrop}>
                   {t("common:productTitle")}
@@ -92,14 +85,6 @@ export default function Home({ product }) {
                       onClick={() => setImage(color)}
                       whileHover={{ scale: 1.2 }}
                       whileTap={{ scale: 0.8 }}
-
-                      // pulsing animation (scale) for active color-item
-
-                      // animate={{
-                      //   scale: [1, 0.8, 1],
-                      // }}
-                      // transition={{ repeat: Infinity, duration: 2 }}
-                      // style={{opacity:"1"}}
                     />
                   ))}
                 </Products>
@@ -121,9 +106,27 @@ export default function Home({ product }) {
                   image={image}
                   key={image}
                   // variants={PictureChange}
-                  initial={{ x: 150, y: -20, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -150, y: 40, opacity: 0 }}
+                  initial={{
+                    x: 0,
+                    y: -80,
+                    opacity: 0,
+                    scale: 0.5,
+                    transition: { duration: 0.6 },
+                  }}
+                  animate={{
+                    x: 0,
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: { duration: 0.6 },
+                  }}
+                  exit={{
+                    x: 0,
+                    y: 80,
+                    opacity: 0,
+                    scale: 0.5,
+                    transition: { duration: 0.6 },
+                  }}
                 />
               </AnimatePresence>
             </Holder>
@@ -135,7 +138,7 @@ export default function Home({ product }) {
             <Holder picture>
               <Profile variants={ProfileChange} />
             </Holder>
-            <Holder profile>
+            <Holder>
               <Cover>
                 <Subtitle variants={TextDrop}>
                   {t("common:profileTitle")}
@@ -149,10 +152,7 @@ export default function Home({ product }) {
                 <Text variants={TextDrop}>{t("common:subtext")}</Text>
               </Cover>
             </Holder>
-            <Footer
-            // initial={{ y: -150, opacity: 0 }}
-            // animate={{ y: 0, opacity: 1 }}
-            />
+            <Footer />
           </Contact>
         )}
       </Wrapper>
@@ -160,15 +160,12 @@ export default function Home({ product }) {
   );
 }
 
-// here use hook from translation to check domain suffix and use suitable collection
-
 export async function getStaticProps() {
   let product;
   let de;
 
   await firestore
     .collection("products")
-    // .where("locale", "==", "en-US")
     .doc("Tr8Q0ojRHguidi7v6O7R")
     .get()
     .then((doc) => (product = doc.data()));
@@ -186,13 +183,6 @@ export async function getStaticProps() {
     .doc("de")
     .get()
     .then((doc) => (de = doc.data()));
-
-  // hardcode calling sub-collection product data for translation
-
-  // await firestore
-  //   .collection("products")
-  //   // .where("locale", "==", "de")
-  //   .doc("Tr8Q0ojRHguidi7v6O7R")
 
   return {
     props: {

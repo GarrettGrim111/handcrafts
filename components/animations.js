@@ -1,8 +1,3 @@
-// Hover + clicking
-
-// whileHover={{scale: 1.0}},
-// whileTap={{scale: 0.95}}}
-
 export const TextDrop = {
   initial: { y: -260, opacity: 0 },
   animate: { y: 0, opacity: 1, transition: { duration: 0.6 } },
