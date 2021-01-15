@@ -34,19 +34,23 @@ const Navigation = ({ option, setOption }) => {
 const Holder = styled.nav`
   display: flex;
   flex-direction: column;
-  width: 40px;
+  width: 55px;
   font-size: 30px;
   position: absolute;
   right: 5vh;
   top: 15vh;
   z-index: 15;
+  background-color: rgba(218, 223, 225, 0.6);
+  border-radius: 25px;
+  align-items: center;
 
-  @media (max-width: 1600px) {
+  @media (max-width: 1665px) {
     flex-direction: row;
     justify-content: space-between;
     top: 2vh;
     left: 2vh;
     width: 180px;
+    padding: 0 10px;
   }
 `;
 

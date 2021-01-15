@@ -42,7 +42,7 @@ export default function Home({ product }) {
   const [image, setImage] = useState("gold");
 
   console.log(product);
-  
+  console.log(product.de);
 
   let { t } = useTranslation();
 
@@ -64,10 +64,12 @@ export default function Home({ product }) {
         {option === "intro" && (
           <Intro id="intro" variants={Stagger}>
             <Holder>
-              <Title variants={TextDrop}>{t("common:mainTitle")}</Title>
-              <Subtitle variants={TextDrop}>
-                {t("common:mainSubtitle")}
-              </Subtitle>
+              <Cover>
+                <Title variants={TextDrop}>{t("common:mainTitle")}</Title>
+                <Subtitle variants={TextDrop}>
+                  {t("common:mainSubtitle")}
+                </Subtitle>
+              </Cover>
             </Holder>
           </Intro>
         )}
@@ -75,7 +77,7 @@ export default function Home({ product }) {
         {option === "product" && (
           <Product variants={Stagger}>
             <Holder product>
-              <Cover>
+              <Cover product>
                 <Subtitle variants={TextDrop}>
                   {t("common:productTitle")}
                 </Subtitle>
@@ -134,12 +136,18 @@ export default function Home({ product }) {
               <Profile variants={ProfileChange} />
             </Holder>
             <Holder profile>
-              <Subtitle variants={TextDrop}>
-                {t("common:profileTitle")}
-              </Subtitle>
-              <Text variants={TextDrop}>{t("common:profileDescription")}</Text>
-              <Text variants={TextDrop}>{t("common:profileDescription2")}</Text>
-              <Text variants={TextDrop}>{t("common:subtext")}</Text>
+              <Cover>
+                <Subtitle variants={TextDrop}>
+                  {t("common:profileTitle")}
+                </Subtitle>
+                <Text variants={TextDrop}>
+                  {t("common:profileDescription")}
+                </Text>
+                <Text variants={TextDrop}>
+                  {t("common:profileDescription2")}
+                </Text>
+                <Text variants={TextDrop}>{t("common:subtext")}</Text>
+              </Cover>
             </Holder>
             <Footer
             // initial={{ y: -150, opacity: 0 }}
@@ -156,7 +164,6 @@ export default function Home({ product }) {
 
 export async function getStaticProps() {
   let product;
-
   let de;
 
   await firestore
@@ -165,6 +172,11 @@ export async function getStaticProps() {
     .doc("Tr8Q0ojRHguidi7v6O7R")
     .get()
     .then((doc) => (product = doc.data()));
+
+  // await firestore
+  //   .collecition("/products/Tr8Q0ojRHguidi7v6O7R/de/de")
+  //   .get()
+  //   .then((doc) => (de = doc.data()));
 
   await firestore
     .collection("products")

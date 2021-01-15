@@ -13,6 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 body {
   min-height: 100vh; 
   font-family: "Verdana", Geneva, Tahoma, sans-serif;
+  background-color: lightgrey;
 }
 
 html {

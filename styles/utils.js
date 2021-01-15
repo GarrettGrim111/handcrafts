@@ -24,12 +24,12 @@ const GeneralPageStyles = css`
 export const Intro = styled(motion.div)`
   ${GeneralPageStyles}
 
-  background-image: url("images/string.jpg");
+  background-image: url("images/seing-blue2.jpg");
 `;
 export const Product = styled(motion.div)`
   ${GeneralPageStyles}
 
-  background-image: url("images/pillow.jpg");
+  background-image: url("images/sewing-pink2.jpg");
 
   @media (max-width: 1350px) {
     display: flex;
@@ -40,6 +40,7 @@ export const Product = styled(motion.div)`
 `;
 export const Contact = styled(motion.div)`
   ${GeneralPageStyles}
+  background-image: url("images/gray.jpg");
 
   @media (max-width: 1300px) {
     display: flex;
@@ -57,17 +58,7 @@ export const Holder = styled(motion.div)`
   width: inherit;
   height: 100vh;
 
-  /* @media (max-width: 1300px) {
-    width: inherit;
-    height: 50vh;
-  } */
-  /* @media (max-width: 700px) {
-    width: inherit;
-    height: 100vh;
-    margin: 40px auto;
-  } */
-
-  ${({ product }) =>
+  /* ${({ product }) =>
     product &&
     `
   //   @media (max-width: 1350px) {
@@ -95,11 +86,11 @@ export const Holder = styled(motion.div)`
     width: auto;
     height: 80vh;
   }
-  `}
+  `} */
 
 ${({ picture }) =>
     picture &&
-    ` @media (max-width: 1300px) {
+    ` @media (max-width: 1350px) {
     // width: auto;
     margin-bottom: 12vh;
     height: 400px;
@@ -113,22 +104,45 @@ ${({ picture }) =>
 
 export const Cover = styled(motion.div)`
   background-color: rgba(218, 223, 225, 0.6);
+  border-radius: 5px;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 5px;
+  margin-top: 20px;
 
+  /* @media (max-width: 700px) {
+    width: auto;
+    margin: 300px 0 100px 0;
+  } */
+
+
+ ${({ product }) =>
+    product &&
+    `
+  //   @media (max-width: 1350px) {
+  //   width: auto;
+  //   height: 90vh;
+  //   margin-top: 20px;
+  // }
+  
   @media (max-width: 700px) {
     width: auto;
-    margin: 80px 0 100px 0;
+    margin-top: 15vh;
   }
+  `} 
+
+
+
+  
 `;
 export const Title = styled(motion.h1)`
   font-size: 80px;
   font-family: "Tangerine", cursive;
   font-weight: bolder;
+  padding: 10px;
+
 `;
 
 export const Subtitle = styled(motion.h4)`
@@ -136,6 +150,8 @@ export const Subtitle = styled(motion.h4)`
   margin-top: 15px;
   text-align: center;
   font-family: "Tangerine", cursive;
+  padding: 10px;
+ 
 `;
 
 export const Text = styled(motion.span)`
@@ -172,15 +188,14 @@ export const Picture = styled(motion.div)`
     if (image === "burgundy") return "url(images/product/burgundyOnPink.jpg)";
   }};
 
-  /* @media (max-width: 1300px) {
-    margin: 35px auto;
-  } */
+@media (max-width: 700px) {
+    margin-top: 10vh;
+  }
 `;
 
 export const Profile = styled(motion.div)`
   width: 600px;
   height: 400px;
-  border-radius: 5px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
   background-position: center;
   background-repeat: no-repeat;
@@ -199,8 +214,8 @@ export const Profile = styled(motion.div)`
 export const Products = styled(motion.div)`
   display: flex;
   width: 250px;
-  background-color: lightgray;
   justify-content: space-between;
+  background-color: lightgray;
   border-radius: 25px;
   margin: 15px;
   padding: 10px;

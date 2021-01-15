@@ -26,6 +26,9 @@ const Holder = styled.div`
   right: 5vh;
   top: 4vh;
   z-index: 15;
+  background-color: rgba(218, 223, 225, 0.6);
+  border-radius: 25px;
+  padding: 10px;
 
   /* @media (max-width: 1300px) {
     position: absolute;
