@@ -23,7 +23,7 @@ const GeneralPageStyles = css`
 export const Intro = styled(motion.div)`
   ${GeneralPageStyles}
 
-  background-image: url("images/seing-blue2.jpg");
+  background-image: url("images/sewing-blue2.jpg");
 `;
 export const Product = styled(motion.div)`
   ${GeneralPageStyles}
