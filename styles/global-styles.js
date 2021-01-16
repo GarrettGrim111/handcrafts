@@ -18,7 +18,9 @@ body {
 
 html {
   scroll-behavior: smooth;
-  
+  height: 100%; 
+  min-width: 100%;
+
 }
 
 a {

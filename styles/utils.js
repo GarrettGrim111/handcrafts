@@ -12,12 +12,24 @@ export const Wrapper = styled(motion.div)`
 
 const GeneralPageStyles = css`
   display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   width: 100%;
-  background-color: lightblue;
+  ${GeneralBackgroundStyles}
+`;
+
+const GeneralBackgroundStyles = css`
+  background-color: lightgrey;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+`;
+
+const GeneralFlexStyles = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Intro = styled(motion.div)`
@@ -28,14 +40,11 @@ export const Intro = styled(motion.div)`
 export const Product = styled(motion.div)`
   ${GeneralPageStyles}
 
-
   background-image: url("images/sewing-pink2.jpg");
 
   @media (max-width: 1350px) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 `;
 export const Contact = styled(motion.div)`
@@ -45,24 +54,20 @@ export const Contact = styled(motion.div)`
   @media (max-width: 1300px) {
     display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
   }
 `;
 
 export const Holder = styled(motion.div)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${GeneralFlexStyles}
+
   flex-direction: column;
   width: inherit;
-  height: 930px;
-
+  height: 920px;
+  margin: 0 auto;
 
   ${({ picture }) =>
     picture &&
     ` @media (max-width: 1350px) {
-    // width: auto;
     margin-bottom: 12vh;
     height: 400px;
     
@@ -74,15 +79,12 @@ export const Holder = styled(motion.div)`
 `;
 
 export const Cover = styled(motion.div)`
+  ${GeneralFlexStyles}
   background-color: rgba(218, 223, 225, 0.7);
   border-radius: 5px;
-  text-align: center;
-  display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-top: 20px;
-
 
   ${({ product }) =>
     product &&
@@ -108,9 +110,7 @@ export const Subtitle = styled(motion.h4)`
 `;
 
 export const Text = styled(motion.span)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${GeneralFlexStyles}
   flex-direction: column;
   font-size: 20px;
   margin: 10px;
@@ -124,11 +124,9 @@ export const Text = styled(motion.span)`
 `;
 
 export const Picture = styled(motion.div)`
+  ${GeneralBackgroundStyles}
   width: 350px;
   height: 350px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   border-radius: 5px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
   background-image: ${({ image }) => {
@@ -146,12 +144,11 @@ export const Picture = styled(motion.div)`
 `;
 
 export const Profile = styled(motion.div)`
+  ${GeneralBackgroundStyles}
+
   width: 600px;
   height: 400px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
-  background-position: center;
-  background-repeat: no-repeat;
-  object-fit: cover;
   background-image: url("images/villegas.jpg");
 
   @media (max-width: 700px) {
