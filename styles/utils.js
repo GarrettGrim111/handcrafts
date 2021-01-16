@@ -28,6 +28,7 @@ export const Intro = styled(motion.div)`
 export const Product = styled(motion.div)`
   ${GeneralPageStyles}
 
+
   background-image: url("images/sewing-pink2.jpg");
 
   @media (max-width: 1350px) {
@@ -55,7 +56,7 @@ export const Holder = styled(motion.div)`
   align-items: center;
   flex-direction: column;
   width: inherit;
-  height: 100vh;
+  height: 930px;
 
 
   ${({ picture }) =>

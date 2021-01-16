@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
 const Holder = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 150px;
+  width: 100px;
   font-size: 20px;
   position: absolute;
   right: 5vh;
