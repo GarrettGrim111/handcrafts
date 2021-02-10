@@ -4,10 +4,15 @@ import { motion } from "framer-motion";
 export const Wrapper = styled(motion.div)`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  min-width: 100%;
   margin: 0 auto;
   flex-direction: column;
   position: relative;
+`;
+const GeneralBackgroundStyles = css`
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const GeneralPageStyles = css`
@@ -15,21 +20,19 @@ const GeneralPageStyles = css`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  width: 100%;
+  width: inherit;
   ${GeneralBackgroundStyles}
-`;
 
-const GeneralBackgroundStyles = css`
-  background-color: lightgrey;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  @media (max-width: 500px) {
+    width: 500px;
+  }
 `;
 
 const GeneralFlexStyles = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: inherit;
 `;
 
 export const Intro = styled(motion.div)`
@@ -47,6 +50,7 @@ export const Product = styled(motion.div)`
     flex-direction: column;
   }
 `;
+
 export const Contact = styled(motion.div)`
   ${GeneralPageStyles}
   background-image: url("images/gray.jpg");
@@ -61,7 +65,7 @@ export const Holder = styled(motion.div)`
   ${GeneralFlexStyles}
 
   flex-direction: column;
-  width: inherit;
+
   height: 920px;
   margin: 0 auto;
 
@@ -82,7 +86,6 @@ export const Cover = styled(motion.div)`
   ${GeneralFlexStyles}
   background-color: rgba(218, 223, 225, 0.7);
   border-radius: 5px;
-  align-items: center;
   flex-direction: column;
   margin-top: 20px;
 
@@ -94,11 +97,33 @@ export const Cover = styled(motion.div)`
   }
   `}
 `;
+
+export const Box = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  height: 300px;
+  
+  @media (max-width: 1665px) {
+    flex-direction: row-reverse;
+    right: 15px;
+    width: 100%;
+    height: 80px;
+    padding: 0 30px;
+   
+  }
+`;
+
 export const Title = styled(motion.h1)`
   font-size: 80px;
   font-family: "Tangerine", cursive;
   font-weight: bolder;
   padding: 10px;
+  text-align: center;
 `;
 
 export const Subtitle = styled(motion.h4)`

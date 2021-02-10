@@ -19,6 +19,7 @@ import {
   Products,
   Item,
   Cover,
+  Box
 } from "styles/utils";
 
 import { Stagger, TextDrop, ProfileChange } from "components/animations.js";
@@ -27,20 +28,14 @@ import Navigation from "components/navigation";
 import Footer from "components/footer";
 import { firestore } from "firebase/utils";
 
-// TODO: solve animatation responsivity
-// TODO: solve product animation (pick the suitable type)
-
 export default function Home({ product }) {
   const [option, setOption] = useState("intro");
   const [image, setImage] = useState("gold");
 
-  console.log(product);
-  console.log(product.de);
-
   let { t } = useTranslation();
 
   return (
-    <div>
+    <>
       <Head>
         <title>HandCrafts</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -51,9 +46,10 @@ export default function Home({ product }) {
       </Head>
 
       <Wrapper initial="initial" animate="animate">
-        <LanguageSwitcher />
-
-        <Navigation option={option} setOption={setOption} />
+        <Box>
+          <LanguageSwitcher />
+          <Navigation option={option} setOption={setOption} />
+        </Box>
         {option === "intro" && (
           <Intro id="intro" variants={Stagger}>
             <Holder>
@@ -105,7 +101,6 @@ export default function Home({ product }) {
                 <Picture
                   image={image}
                   key={image}
-                  // variants={PictureChange}
                   initial={{
                     x: 0,
                     y: -80,
@@ -156,13 +151,12 @@ export default function Home({ product }) {
           </Contact>
         )}
       </Wrapper>
-    </div>
+    </>
   );
 }
 
 export async function getStaticProps() {
   let product;
-  let de;
 
   await firestore
     .collection("products")
@@ -170,24 +164,9 @@ export async function getStaticProps() {
     .get()
     .then((doc) => (product = doc.data()));
 
-  // await firestore
-  //   .collecition("/products/Tr8Q0ojRHguidi7v6O7R/de/de")
-  //   .get()
-  //   .then((doc) => (de = doc.data()));
-
-  await firestore
-    .collection("products")
-    // .where("locale", "==", "en-US")
-    .doc("Tr8Q0ojRHguidi7v6O7R")
-    .collection("de")
-    .doc("de")
-    .get()
-    .then((doc) => (de = doc.data()));
-
   return {
     props: {
       product,
-      de,
     },
   };
 }
