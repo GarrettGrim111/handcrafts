@@ -22,18 +22,10 @@ const Holder = styled.div`
   justify-content: space-between;
   width: 100px;
   font-size: 20px;
-  /* position: absolute;
-  right: 40px;
-  top: 40px; */
   background-color: rgba(218, 223, 225, 0.6);
   border-radius: 25px;
   padding: 10px;
-/* 
-  @media (max-width: 500px) {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-  } */
+
 `;
 
 const Language = styled.span`
