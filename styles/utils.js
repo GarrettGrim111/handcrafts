@@ -8,11 +8,9 @@ export const Wrapper = styled(motion.div)`
   margin: 0 auto;
   flex-direction: column;
   position: relative;
-  min-height: 100vh;
 
   @media (max-width: 500px) {
     min-width: 500px;
-  
   }
 `;
 const GeneralBackgroundStyles = css`
@@ -51,7 +49,7 @@ export const Product = styled(motion.div)`
 
   background-image: url("images/sewing-pink2.jpg");
 
-  @media (max-width: 1350px) {
+  @media (max-width: 1300px) {
     display: flex;
     flex-direction: column;
   }
@@ -71,20 +69,39 @@ export const Holder = styled(motion.div)`
   ${GeneralFlexStyles}
 
   flex-direction: column;
-
   height: 920px;
   margin: 0 auto;
+
+  ${({ product }) =>
+    product &&
+    ` @media (max-width: 1665px) {
+    height: 1080px;
+    
+    
+    @media (max-width: 700px) {
+    display: flex;
+    height: 1080px;
+  }
+  `}
+
+  ${({ profile }) =>
+    profile &&
+    ` @media (max-width: 1300px) {
+    height: 600px;
+    justify-content: unset;
+    
+    @media (max-width: 700px) {
+    display: flex;
+    height: 600px;
+  }
+  `}
 
   ${({ picture }) =>
     picture &&
     ` @media (max-width: 1300px) {
-    margin-bottom: 12vh;
-    height: 300px;
+    height: 450px;
+    justify-content: flex-start;
     
-    @media (max-width: 700px) {
-    display: flex;
-    height: 100%;
-  }
   `}
 `;
 
@@ -99,7 +116,7 @@ export const Cover = styled(motion.div)`
     product &&
     `@media (max-width: 700px) {
     width: auto;
-    margin-top: 15vh;
+   
   }
   `}
 `;
@@ -160,6 +177,7 @@ export const Picture = styled(motion.div)`
   ${GeneralBackgroundStyles}
   width: 350px;
   height: 350px;
+  margin-bottom: 50px;
   border-radius: 5px;
   box-shadow: 10px 10px 35px 10px rgba(0, 0, 0, 0.75);
   background-image: ${({ image }) => {
@@ -172,7 +190,7 @@ export const Picture = styled(motion.div)`
   }};
 
   @media (max-width: 700px) {
-    margin-top: 10vh;
+    margin-top: 50px;
   }
 `;
 

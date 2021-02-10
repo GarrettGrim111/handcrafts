@@ -19,7 +19,7 @@ import {
   Products,
   Item,
   Cover,
-  Box
+  Box,
 } from "styles/utils";
 
 import { Stagger, TextDrop, ProfileChange } from "components/animations.js";
@@ -65,7 +65,7 @@ export default function Home({ product }) {
 
         {option === "product" && (
           <Product variants={Stagger}>
-            <Holder>
+            <Holder product>
               <Cover product>
                 <Subtitle variants={TextDrop}>
                   {t("common:productTitle")}
@@ -130,7 +130,7 @@ export default function Home({ product }) {
 
         {option === "contact" && (
           <Contact variants={Stagger}>
-            <Holder picture>
+            <Holder profile>
               <Profile variants={ProfileChange} />
             </Holder>
             <Holder>

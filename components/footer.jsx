@@ -26,7 +26,9 @@ const Container = styled(motion.footer)`
 
   @media (max-width: 700px) {
     flex-wrap: wrap;
+    /* margin-top: 200px; */
   }
+ 
 `;
 
 export default Footer;
