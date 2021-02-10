@@ -8,6 +8,12 @@ export const Wrapper = styled(motion.div)`
   margin: 0 auto;
   flex-direction: column;
   position: relative;
+  min-height: 100vh;
+
+  @media (max-width: 500px) {
+    min-width: 500px;
+  
+  }
 `;
 const GeneralBackgroundStyles = css`
   background-position: center;
@@ -71,9 +77,9 @@ export const Holder = styled(motion.div)`
 
   ${({ picture }) =>
     picture &&
-    ` @media (max-width: 1350px) {
+    ` @media (max-width: 1300px) {
     margin-bottom: 12vh;
-    height: 400px;
+    height: 300px;
     
     @media (max-width: 700px) {
     display: flex;
@@ -107,14 +113,16 @@ export const Box = styled.div`
   right: 40px;
   top: 40px;
   height: 300px;
-  
+
   @media (max-width: 1665px) {
     flex-direction: row-reverse;
     right: 15px;
     width: 100%;
     height: 80px;
     padding: 0 30px;
-   
+  }
+  @media (max-width: 500px) {
+    min-width: 500px;
   }
 `;
 
